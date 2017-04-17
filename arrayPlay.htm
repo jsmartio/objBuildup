@@ -1,0 +1,56 @@
+<html>
+
+	<head>
+	<script>
+	var car_parts = ["window","tires","engine"];	
+	
+	function logArrayElements(element, index, array) {
+		var d = document.getElementById("ds");
+  		d.innerHTML += "\n<br>";
+  		d.innerHTML += 'a[' + index + '] = ' + element;
+	}	
+	
+	function init(){
+		console.log("DOM Content Loaded");
+		var d = document.getElementById("ds");
+		d.innerHTML += "\n<br>Loaded ...\nArray Length= "+car_parts.length;
+		car_parts[10] = "seats";
+		
+		d.innerHTML += "\n<br>car_parts[100]=seats\nArray Length= "+car_parts.length;
+		car_parts[8] = 9;
+		var temp = typeof car_parts[8];
+		
+		d.innerHTML += "\n<br>car_parts[80] typeof =  "+temp;
+		temp = typeof car_parts[2];
+		d.innerHTML += "\n<br>car_parts[2] typeof =  "+temp;
+		
+		car_parts.forEach(function(entry) {
+			d.innerHTML += "\n<br>foreach ->  "+entry;
+		});
+		
+
+		car_parts.forEach(logArrayElements);
+		
+	}
+	
+	window.addEventListener("DOMContentLoaded", init, false);
+	</script>
+	<style>
+	body{
+		padding:20px;
+		font-family:verdana, arial, helvetica;
+	}
+	</style>
+		
+	</head>
+
+
+
+<body>
+
+	<div id="ds">display</div>
+	
+</body>
+</html>
+	
+	
