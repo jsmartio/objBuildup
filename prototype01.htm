@@ -1,0 +1,56 @@
+<html>
+
+
+	<head>
+	<script>
+	function Person(gender, age, height){
+		this.gender = gender;
+		this.age = age;
+		this.height = height;
+	}
+
+	Person.prototype.Nationality = 'American';
+
+	function init(){
+		var d = document.getElementById("d");
+		
+		var billy = new Person('M',34,188);
+		var jane = new Person('F',35,138);
+		console.log('billy.gender = '+billy.gender);
+		d.innerHTML += "\n<br>billy.gender is "+ billy.gender;
+		d.innerHTML += "\n<br>billy.age is "+ billy.age;
+		d.innerHTML += "\n<br>billy.height is "+ billy.height;
+		
+		// now add property
+		billy.shoeSize = 12;
+		d.innerHTML += "\n<br>billy.shoeSize is "+ billy.shoeSize;
+
+		// now add Function
+		billy.specs = function(){
+			return "Gender: "+this.gender+" Age"+this.age;
+		}
+		var specs = billy.specs();
+		d.innerHTML += "\n<br>SPECS "+ specs;
+		
+		d.innerHTML += "\n<br>jane Nationality = " + jane.Nationality;
+	}
+	
+	window.addEventListener("DOMContentLoaded",init,false);
+	
+	</script>
+	<style>
+	body{
+		padding:20px;
+		font-family:arial, obuntu,sans;
+	}
+	</style>
+	</head>
+	
+	<body>
+	
+	
+	<div id="d"><div>
+	
+	</body>
+	
+</html>
