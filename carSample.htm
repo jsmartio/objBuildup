@@ -1,0 +1,55 @@
+<html>
+
+
+<head>
+<script>
+var car = {
+
+	wheels:4,
+	color:'black',
+	engine:'300hp',
+	tire_pressure: {
+		front_right:'35pps',
+		front_left:'34pps',
+		back_right:'33pps',
+		back_left:'36pps'
+	},
+	year:2012,
+	make:'ford',
+	model:'Bronco'
+
+};
+
+	function init(){
+		console.log("Loaded");
+		var db = document.getElementById("db");
+    
+    // here we demonstrate 2 ways to referece object parameters
+		db.innerHTML += "\n<br>object details to follow";	
+		db.innerHTML += "\n<br>car.color <b>"+car.color+"</b>";
+		db.innerHTML += "\n<br>car.tire_pressure.front_left:<b>"+car.tire_pressure.front_left+"<b>";
+		db.innerHTML += "\n<br>car.year:<b>"+car.year+"<b>";
+		db.innerHTML += "\n<br>car['make']:<b>"+car['make']+"<b>";
+		db.innerHTML += "\n<br>car['tire_pressure']['back_right']:<b>"+car['tire_pressure']['back_right']+"<b>";
+	}
+
+	window.addEventListener("DOMContentLoaded", init, false); 
+</script>
+<style>
+body{
+
+	padding:20px;
+	font-family: obuntu, verdana,helvetica;
+	font-size:12px;
+}	
+</style>
+</head>
+
+
+<body>
+Basic object creation with no inheritance 
+
+<div class="d" id="db">NOTES:</div>
+
+</body>
+</html>
