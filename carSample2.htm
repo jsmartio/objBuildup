@@ -1,0 +1,43 @@
+<html>
+
+
+<head>
+<script>
+
+
+	function car(make, model, year){
+		this.make = make;
+		this.model = model;
+		this.year = year;
+	
+	}
+
+	function init(){
+		console.log("Loaded");
+		var truck = new car("Ford","Bronco",1992);
+		
+		var db = document.getElementById("db");
+		db.innerHTML += "\n<br>truck.make <b>"+truck.make+"</b>";
+		db.innerHTML += "\n<br>truck['model'] <b>"+truck['model']+"</b>";
+	}
+
+	window.addEventListener("DOMContentLoaded", init, false); 
+</script>
+<style>
+body{
+
+	padding:20px;
+	font-family: obuntu, verdana,helvetica;
+	font-size:12px;
+}	
+</style>
+</head>
+
+
+<body>
+Basic object creation with no inheritance 
+
+<div class="d" id="db">NOTES:</div>
+
+</body>
+</html>
