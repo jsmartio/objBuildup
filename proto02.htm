@@ -1,0 +1,55 @@
+<html>
+
+<head>
+	<script>
+	
+	function vehicle(year,make,model){
+		this.year 		= year
+		this.make 		= make;
+		this.model 		= model;
+	}
+	
+	function w(op){ // write results to div
+		var d = document.getElementById("d");
+		d.innerHTML +=  op;
+	}
+	
+	function init(){
+		console.log("DOM Content Loaded");
+		w("\n<br>DOM ContentLoaded ");		
+		
+		// create from prototype
+		myVan = new vehicle(1998, "Dodge", "Caravan");
+		myHatch = new vehicle(2017,"Honda","Pilot");
+		w("\n<br>Vehicle make:"+myVan.make+"  model:"+myVan.model+" year:"+myVan.year);
+		
+		vehicle.prototype.numw = 4;
+		vehicle.prototype.show = function(){
+			
+			for (var property in this) {
+    			if (this.hasOwnProperty(property)) {
+        			console.log(property);
+        			w("\n<br> this[property]: " + property + " -> "+this[property]);
+    			}	
+			}
+		}
+		myVan.show();			// show van Info
+		myHatch.show();		// show hatchBack Info		
+	}
+	window.addEventListener("DOMContentLoaded",init,false);
+	</script>
+	<style>
+	body {
+		padding:25px;
+		font-family:obuntu,arial,helvetica;
+	}
+	</style>
+</head>
+
+<body>
+	
+	
+	<div id="d">Info</div>
+	
+</body>
+</html>
