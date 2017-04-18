@@ -1,0 +1,43 @@
+<html>
+
+<head>
+	<script>
+	function Resort(chain, country, city){
+		this.chain = chain;
+		this.country = country;
+		this.city = city;
+	}
+	function w(m){
+		var d = document.getElementById("d");
+		d.innerHTML += m;
+	}
+	
+	function init(){
+		Resort.prototype.rooms = 400;
+		var iberoPunta = new Resort("Iberostar", "DR", "Punta Cana");
+		var meliaCabo = new Resort("Melia", "Mexico", "Los Cabos");
+		meliaCabo.rooms = 500;
+		Resort.prototype.show = function(){
+			for (var prop in this){
+				if(this.hasOwnProperty(prop)){
+					w("\n<br>"+prop+"->"+this[prop]);
+				}
+			}
+		}
+		iberoPunta.show();
+		meliaCabo.show();
+	}
+	
+	window.addEventListener("DOMContentLoaded", init, false);
+	</script>
+	
+	<style>
+	</style>
+</head>
+
+<body>
+
+<div id="d">Notes</div>
+
+</body>
+</html>
