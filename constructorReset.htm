@@ -1,0 +1,93 @@
+<html>
+
+<head>
+
+
+	<style>
+		body {
+			font-family:obuntu, arial, verdana;
+			font-size:12px;
+		}
+	</style>
+	<script>
+
+		// display output to div
+		function w(outp){
+			var d = document.getElementById("dis");
+			outp = outp.toString();
+			outp2 = outp.replace("\n","<br>");
+			outp2 = outp2.replace("\r","<br>");
+			outp2 = outp2.replace("\t","    ");
+			d.innerHTML += outp2;
+		}
+
+		function extend(base, sub) {
+			// assign the parent prototype to local variable
+  			var origProto = sub.prototype;
+
+			// The Object.create() method creates a new object with the specified prototype object and properties.
+  			sub.prototype = Object.create(base.prototype);
+  			for (var key in origProto)  {
+     			sub.prototype[key] = origProto[key];
+     			w("\n\t<br> <font color=red>origProto[key]:</font>"+origProto[key]);
+  			}
+  			// The constructor property was set wrong, let's fix it
+  			Object.defineProperty(sub.prototype, 'constructor', { 
+    			enumerable: false, 
+    			value: sub 
+  			});
+		}
+
+		// Object contrsucted by function
+		function Animal(name) {
+  			this.name = name;
+		}
+
+		// later referred to as the base
+		Animal.prototype = {
+  			sayMyName: function() {
+    			console.log(this.myWords() + " " + this.name);
+    			w("<br><font color=red> othis.GetWords:</font>"+this.myWords() + " " + this.name);
+  			},
+  			myWords: function() {
+    		// Abstract
+  			}
+		}
+
+		// later referred to as 'sub'
+		function Cat(name) {
+  			Animal.call(this, name); // Call the parent's constructor
+		}
+
+		Cat.prototype = {
+  	  	myWords: function(){
+  	    		return "Meow!";
+    		}
+		}    
+
+		function init(){
+			// Setup the prototype chain the right way
+			extend(Animal, Cat);
+
+			// Here is where the Cat (and Animal) constructors are called
+			var cat = new Cat("Felix");
+			cat.sayMyName(); 
+			console.log(cat instanceof Animal); // true
+			w("<br><font color=red> cat instanceof Animal: </font>" + cat instanceof Animal)
+			console.log(cat.constructor); 
+			w("<br> <font color=red>cat.constructor:</font>" + cat.constructor);
+		}
+
+		window.addEventListener("DOMContentLoaded", init, false);
+
+	</script>
+
+</head>
+
+<body>
+
+	<div id="dis">output</div>
+
+</body>
+
+</html>
