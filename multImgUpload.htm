@@ -1,0 +1,40 @@
+
+<html>
+<head>
+<script>
+
+function updateSize() {
+  	console.log("UPDATE SIZE");
+  	var nBytes = 0;
+	var oFiles = document.getElementById("uploadInput").files;
+    var nFiles = oFiles.length;
+    
+  	for (var nFileId = 0; nFileId < nFiles; nFileId++) {
+    	nBytes += oFiles[nFileId].size;
+  	}
+  
+  	var sOutput = nBytes + " bytes";
+
+  	// end of optional code
+  	document.getElementById("fileNum").innerHTML = nFiles;
+  	document.getElementById("fileSize").innerHTML = sOutput;
+}
+
+
+function init(){
+	updateSize();
+	console.log("DOM Content Loaded");
+}
+
+window.addEventListener("DOMContentLoaded", init, false);
+</script>
+</head>
+
+<body>
+begin:
+<form name="uploadForm">
+<p><input id="uploadInput" type="file" name="myFiles" onchange="updateSize();" multiple> selected files: <span id="fileNum">0</span>; total size: <span id="fileSize">0</span></p>
+<p><input type="submit" value="Send file"></p>
+</form>
+</body>
+</html>
