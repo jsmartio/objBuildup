@@ -13,6 +13,8 @@
 	function init(){
 		console.log("DOM Content Loaded");
 		var d = document.getElementById("ds");
+		
+		console.log("d="+d);
 		d.innerHTML += "\n<br>Loaded ...\nArray Length= "+car_parts.length;
 		car_parts[10] = "seats";
 		
